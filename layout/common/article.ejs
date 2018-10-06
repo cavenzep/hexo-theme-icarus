@@ -10,7 +10,9 @@
                     <div class="article-meta">
                         <%- partial('post/date', { class_name: 'article-date', date_format: null }) %>
                         <%- partial('post/category') %>
-                        <%- partial('post/tag') %>
+                        <% if (!(index && post.excerpt)) { %>
+                            被围观<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>次
+                        <% } %>
                     </div>
                 <% } %>
             </header>
@@ -33,8 +35,7 @@
         <% } %>
         </div>
         <footer class="article-footer">
-            <%- partial('share/index', { post: post }) %>
-            <%- partial('comment/counter', { post: post }) %>
+            <%- partial('post/tag') %>
         </footer>
     </div>
     <% if (!index) { %>
